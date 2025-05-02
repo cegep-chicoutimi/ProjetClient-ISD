@@ -41,7 +41,7 @@ namespace BiblioAPI
                 }
                 else
                 {
-                    throw new Exception(response.Result.ReasonPhrase);
+                    throw new Exception(response.Result.Content.ReadAsStringAsync().Result);
                 }
             }
         }
@@ -59,7 +59,7 @@ namespace BiblioAPI
                 }
                 else
                 {
-                    throw new Exception(response.Result.ReasonPhrase);
+                    throw new Exception(response.Result.Content.ReadAsStringAsync().Result);
                 }
             }
         }
