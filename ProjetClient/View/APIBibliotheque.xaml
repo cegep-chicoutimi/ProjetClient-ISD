@@ -1,0 +1,51 @@
+﻿<Window x:Class="ProjetClient.View.APIBibliotheque"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjetClient.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        xmlns:viewmodel="clr-namespace:ProjetClient.ViewModel"
+        d:DataContext="{d:DesignInstance Type=viewmodel:ThemeVM}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        Title="APIBibliotheque" Height="450" Width="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <local:ModificationLivre x:Name="Modification" Visibility="Collapsed"/>
+            <local:Authentification x:Name="Authentification" Visibility="Visible"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="1.8*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Zone de notification: " VerticalAlignment="Center"/>
+                <Label Grid.Column="1" Foreground="Red" Content="NOtif" VerticalAlignment="Center"/>
+
+            <WrapPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                <Label x:Name="label_theme" Content="Mode Obscur"
+                    VerticalAlignment="Center"  HorizontalAlignment="Left"
+                    Foreground="{DynamicResource MaterialDesignBody}"
+                    FontFamily="{DynamicResource MaterialDesignFont}"/>
+                <ToggleButton Grid.Column="1" VerticalAlignment="Center" Grid.Row="1"
+                    IsChecked="{Binding IsDarkTheme}" />
+                <Label Content="ON"/>
+            </WrapPanel>
+
+            <ComboBox x:Name="languageSelector" Height="25" Grid.Column="3" Foreground="{DynamicResource MaterialDesignBody}"
+                    FontFamily="{DynamicResource MaterialDesignFont}" SelectionChanged="LanguageSelector_SelectionChanged" >
+                <ComboBoxItem Tag="en" Content="English"/>
+                <ComboBoxItem Tag="fr" Content="Français" IsSelected="True"/>
+            </ComboBox>
+        </Grid>
+    </Grid>
+</Window>
